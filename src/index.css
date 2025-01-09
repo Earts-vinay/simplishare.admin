@@ -1,0 +1,13 @@
+body {
+  background-color: #F0F0F0; /* Set the background color */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), 
+    url('../public/assets/images/background_img.svg'); /* Corrected the path */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
