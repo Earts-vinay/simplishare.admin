@@ -11,147 +11,86 @@ import {
   Box,
   alpha,
 } from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import UploadIcon from "@mui/icons-material/Upload";
-import { IoIosAddCircleOutline } from "react-icons/io";
-import AddIcon from "@mui/icons-material/Add";
-import { IoIosArrowDropdown } from "react-icons/io";
+import { IoIosAddCircleOutline, IoIosArrowDropdown } from "react-icons/io";
 import colors from "../utils/colors";
 
-const BrandScreen = () => {
-  return (
-    <Container sx={{ flexGrow: 1, paddingTop: 10 }}>
-      <Typography variant="p" >
-         Brand /
-      </Typography>
-      <Typography variant="h5" sx={{ marginY: 2 }}>
-        Untitled Brand Kit
-      </Typography>
-
-      {/* Brand Logo Accordion */}
-      <Accordion sx={{ marginBottom: 3 }}>
-  <AccordionSummary 
-    expandIcon={<IoIosArrowDropdown fontSize={22}/>} 
-   
-  >
-    <Box sx={{ display: "flex", justifyContent: "space-between", flex: 1 }}>
-      <Typography>Brand Logo</Typography>
-      <Button
-        startIcon={<IoIosAddCircleOutline />}
-        variant="contained"
-        sx={{
-          backgroundColor: alpha(colors.red, 0.05), // Use 5% opacity for red color
-          color: "#000",
-          width: "100px",
-          height: "27px",
-          textTransform:"capitalize",
-          marginRight:"10px"
-        }}
-      >
-        Upload
-      </Button>
-    </Box>
-  </AccordionSummary>
-  <AccordionDetails>
-    <img src="/assets/logos/simpleshare_logo.svg" alt="" />
-  </AccordionDetails>
-</Accordion>
-
-
-      {/* Colour Palette Accordion */}
-      <Accordion sx={{marginBottom:3}}>
-        <AccordionSummary expandIcon={<IoIosArrowDropdown fontSize={22}/>}>
-          <Typography>Colour Palette</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
+const CustomAccordion = ({ title, buttonText, buttonWidth, children }) => (
+  <Accordion elevation={0} sx={{ marginBottom: 3,elevation:0 }}>
+    <AccordionSummary elevation={0} expandIcon={<IoIosArrowDropdown fontSize={22} />}>
+      <Box sx={{ display: "flex", justifyContent: "space-between", flex: 1 }}>
+        <Typography>{title}</Typography>
+        {buttonText && (
           <Button
-            startIcon={<AddIcon />}
+            startIcon={<IoIosAddCircleOutline />}
             variant="contained"
-            sx={{ backgroundColor: "#f4f4f4", color: "#000" }}
+            sx={{
+              backgroundColor: alpha(colors.red, 0.05),
+              color: "#000",
+              width: buttonWidth,
+              height: "27px",
+              textTransform: "capitalize",
+              marginRight: "10px",
+            }}
           >
-            New Palette
+            {buttonText}
           </Button>
-        </AccordionDetails>
-      </Accordion>
+        )}
+      </Box>
+    </AccordionSummary>
+    <AccordionDetails>{children}</AccordionDetails>
+  </Accordion>
+);
 
-      {/* Fonts Accordion */}
-      <Accordion sx={{marginBottom:3}}>
-        <AccordionSummary expandIcon={<IoIosArrowDropdown fontSize={22}/>}>
-          <Typography>Fonts</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Button
-            startIcon={<AddIcon />}
-            variant="contained"
-            sx={{ backgroundColor: "#f4f4f4", color: "#000" }}
-          >
-            New Font
-          </Button>
-        </AccordionDetails>
-      </Accordion>
+const BrandScreen = () => (
+  <Container sx={{ flexGrow: 1, paddingTop: 10 }}>
+    <Typography variant="p">Brand /</Typography>
+    <Typography variant="h5" sx={{ marginY: 2 }}>
+      Untitled Brand Kit
+    </Typography>
 
-      {/* Text Style Guide Accordion */}
-      <Accordion sx={{marginBottom:3}}>
-        <AccordionSummary expandIcon={<IoIosArrowDropdown fontSize={22}/>}>
-          <Typography>Text Style Guide</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Button
-            startIcon={<UploadIcon />}
-            variant="contained"
-            sx={{ backgroundColor: "#f4f4f4", color: "#000" }}
-          >
-            Import
-          </Button>
-        </AccordionDetails>
-      </Accordion>
+    <CustomAccordion title="Brand Logo" buttonText="Upload" buttonWidth="100px">
+      <img src="/assets/logos/simpleshare_logo.svg" alt="Brand Logo" />
+    </CustomAccordion>
 
-      {/* Language Accordion */}
-      <Accordion sx={{marginBottom:3}}>
-        <AccordionSummary expandIcon={<IoIosArrowDropdown fontSize={22}/>}>
-          <Typography>Language</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Select defaultValue="India" sx={{ width: 200 }}>
-            <MenuItem value="India">India</MenuItem>
-            <MenuItem value="UK">English UK</MenuItem>
-          </Select>
-        </AccordionDetails>
-      </Accordion>
+    <CustomAccordion title="Colour Palette" buttonText="New Palette" buttonWidth="140px">
+      palette
+    </CustomAccordion>
 
-      {/* Content Framework/Voices Accordion */}
-      <Accordion sx={{marginBottom:3}}>
-        <AccordionSummary expandIcon={<IoIosArrowDropdown fontSize={22}/>}>
-          <Typography>Content Framework/Voices</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Button
-            startIcon={<AddIcon />}
-            variant="contained"
-            sx={{ backgroundColor: "#f4f4f4", color: "#000" }}
-          >
-            Add Voice
-          </Button>
-        </AccordionDetails>
-      </Accordion>
+    <CustomAccordion title="Fonts" buttonText="New Font" buttonWidth="120px">
+      Fonts
+    </CustomAccordion>
 
-      {/* Template Style Accordion */}
-      <Accordion sx={{marginBottom:3}}>
-        <AccordionSummary expandIcon={<IoIosArrowDropdown fontSize={22}/>}>
-          <Typography>Template Style</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Button
-            startIcon={<AddIcon />}
-            variant="contained"
-            sx={{ backgroundColor: "#f4f4f4", color: "#000" }}
-          >
-            New Style
-          </Button>
-        </AccordionDetails>
-      </Accordion>
-    </Container>
-  );
-};
+    <CustomAccordion title="Text Style Guide" buttonText="Import" buttonWidth="100px" >
+      <Box>
+        <Typography>Type Style</Typography>
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <h4>Heading 4</h4>
+        <h5>Heading 5</h5>
+        <h6>Heading 6</h6>
+      </Box>
+    </CustomAccordion>
+
+    <CustomAccordion title="Language">
+      <Select defaultValue="India" sx={{ width: 200 }}>
+        <MenuItem value="India">India</MenuItem>
+        <MenuItem value="UK">English UK</MenuItem>
+      </Select>
+    </CustomAccordion>
+
+    <CustomAccordion
+      title="Content Framework/Voices"
+      buttonText="Add Voice"
+      buttonWidth="130px"
+    />
+
+    <CustomAccordion
+      title="Template Style"
+      buttonText="Add Style"
+      buttonWidth="130px"
+    />
+  </Container>
+);
 
 export default BrandScreen;

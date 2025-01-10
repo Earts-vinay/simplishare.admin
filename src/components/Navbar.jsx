@@ -12,7 +12,13 @@ import colors from '../utils/colors';
 
 // Reusable Navbar Item component with routing
 const NavbarItem = ({ icon, label, to, showLabel }) => (
-  <NavLink to={to} style={{ textDecoration: 'none', color: colors.lightgray }}>
+  <NavLink
+    to={to}
+    style={({ isActive }) => ({
+      textDecoration: 'none',
+      color: isActive ? colors.red : colors.semigray, // Apply red color when active
+    })}
+  >
     <Box
       sx={{
         display: 'flex',
@@ -22,7 +28,7 @@ const NavbarItem = ({ icon, label, to, showLabel }) => (
     >
       <IconButton color="inherit">
         {typeof icon === 'string' ? (
-          <img src={icon} alt={`${label} icon`} style={{ width: '20px', height: '20px' }} />
+          <img src={icon} alt={`${label} icon`} style={{ width: '20px', height: '20px', filter: 'invert(0)' }} />
         ) : (
           React.createElement(icon) // Use React.createElement for Material-UI icons
         )}
@@ -88,11 +94,14 @@ const Navbar = () => {
             <NavbarItem icon="/assets/icons/brand_icon.svg" label="BRAND" to="/brand" showLabel={!isMobile} />
             <NavbarItem icon="/assets/icons/audience_icon.svg" label="AUDIENCE" to="/audience" showLabel={!isMobile} />
             <NavbarItem icon='/assets/icons/offers_icon.svg' label="OFFERS" to="/offers" showLabel={!isMobile} />
-            <NavbarItem icon='/assets/icons/gen_icon.svg' label="AUTO GEN " to="/genpost" showLabel={!isMobile} />
+            <NavbarItem icon='/assets/icons/gen_icon.svg' label="GEN AI " to="/genpost" showLabel={!isMobile} />
             <NavbarItem icon='/assets/icons/analytics_icon.svg' label="ANALYSTS" to="/analysts" showLabel={!isMobile} />
           </Box>
 
-          <Box sx={{display:"flex",gap:"10px",alignItems:"center"}}><Avatar sx={{ bgcolor: colors.red, color: colors.white, borderRadius: '10px' }}>UN</Avatar> <Typography sx={{color:colors.black}}>User Name</Typography></Box>
+          <Box sx={{display:"flex",gap:"10px",alignItems:"center"}}>
+            <Avatar sx={{ bgcolor: colors.red, color: colors.white, borderRadius: '10px' }}>UN</Avatar>
+            <Typography sx={{color:colors.black}}>User Name</Typography>
+          </Box>
         </Toolbar>
       </AppBar>
     </>
