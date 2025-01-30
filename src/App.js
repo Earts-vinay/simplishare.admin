@@ -8,6 +8,7 @@ import GenPost from './pages/GenPost';
 import Analysts from './pages/Analysts';
 import Signup from './components/Login_Screens/signup';
 import Audience from './pages/Audience';
+import AddOffers from './components/Offers_Screens/AddOffers';
 
 const App = () => (
   <Router>
@@ -18,6 +19,7 @@ const App = () => (
       <Route path="/brand" element={<Brand />} />
       <Route path="/audience" element={<Audience />} />
       <Route path="/offers" element={<Offers />} />
+      <Route path="/offers/addoffers" element={<AddOffers />} />
       <Route path="/genpost" element={<GenPost />} />
       <Route path="/analysts" element={<Analysts />} />
     </Routes>
