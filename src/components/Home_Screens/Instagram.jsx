@@ -13,6 +13,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import ShareIcon from '@mui/icons-material/Share';
 import colors from '../../utils/colors';
+import fontFamily from '../../utils/fonts';
 
 // Example data array
 const instagramData = [
@@ -70,51 +71,53 @@ const instagramData = [
 const Instagram = () => {
   return (
     <Grid item xs={12} md={3}>
-      <Paper elevation={0} sx={{ p: 1,borderTopRightRadius: "10px",borderBottomRightRadius:"10px" }}>
-          <Box sx={{ display:'flex',alignItems:"center",gap:"10px",mb:1}}>
-                <img src="/assets/icons/instagram.svg" alt="" />
-              <Typography variant="h6">
-                Instagram
-              </Typography>
-                </Box>
+      <Paper elevation={0} sx={{ p: 1, borderTopRightRadius: "10px", borderBottomRightRadius: "10px" }}>
+        <Box sx={{ display: 'flex', alignItems: "center", gap: "10px", marginY:"8px" }}>
+          <img src="/assets/icons/instagram.svg" alt="" />
+          <Typography variant="h6" sx={{ fontFamily }}>
+            Instagram
+          </Typography>
+        </Box>
         {instagramData.map((post) => (
-          <Box key={post.id} sx={{ mb: 2,backgroundColor:colors.lightgray,p:1,borderRadius:"10px" }}>
+          <Box key={post.id} sx={{ mb: 1.5, backgroundColor: colors.lightgray, p: 1, borderRadius: "10px" }}>
             <Stack direction="row" spacing={2} alignItems="center" mb={1}>
               <Box>
-              <img src={post.image} alt="" style={{width:"100px",height:"70px",objectFit:"cover"}}/>
-              <Typography variant="body2" sx={{fontSize:"9px",color:colors.white,backgroundColor:colors.black,marginTop:"0px"}}>
+                <img src={post.image} alt="" style={{ width: "100px", height: "70px", objectFit: "cover" }} />
+                <Typography sx={{ fontSize: "9px", color: colors.white, backgroundColor: colors.black, marginTop: "0px", fontFamily, textAlign: "center" }}>
                   {post.date} | {post.time}
                 </Typography>
               </Box>
               <Box>
-                <Typography variant="body2" sx={{fontSize:"12px"}} >{post.description}</Typography>
+                <Typography sx={{ fontSize: "12px", fontFamily }} >{post.description}</Typography>
                 <Typography
-              variant="body2"
-              color="textSecondary"
-              sx={{fontSize:"10px"}} 
-            >
-              {post.hashtags}
-            </Typography>
-            <Box direction="row">
-              <IconButton>
-                <FavoriteBorderIcon sx={{fontSize:"13px",paddingLeft:"5px"}}/>
-                <Typography variant="body2" sx={{fontSize:"13px",paddingLeft:"5px"}}>
-                  {post.likes}
+                  color="textSecondary"
+                  sx={{ fontSize: "10px", fontFamily }}
+                >
+                  {post.hashtags}
                 </Typography>
-              </IconButton>
-              <IconButton>
-                <ChatBubbleOutlineIcon sx={{fontSize:"13px",paddingLeft:"5px"}} />
-                <Typography variant="body2" sx={{fontSize:"13px",paddingLeft:"5px"}}>
-                  {post.comments}
-                </Typography>
-              </IconButton>
-              <IconButton>
-                <ShareIcon sx={{fontSize:"13px",paddingLeft:"5px"}} />
-                <Typography variant="body2" sx={{fontSize:"13px",paddingLeft:"5px"}}>
-                  {post.shares}
-                </Typography>
-              </IconButton>
-            </Box>
+                <Box sx={{ display: "flex", alignItems: "center", gap: "18px" }}>
+
+                  <Box sx={{ display: "flex", alignItems: "center", gap: "2px" }}>
+                    <img src="/assets/icons/avg_likes.svg" alt="" />
+                    <Typography sx={{ fontSize: "13px", paddingLeft: "5px", fontFamily }}>
+                      {post.likes}
+                    </Typography>
+                  </Box>
+
+                  <Box sx={{ display: "flex", alignItems: "center", gap: "2px" }}>
+                    <img src="/assets/icons/engagement.svg" alt="" />
+                    <Typography sx={{ fontSize: "13px", paddingLeft: "5px", fontFamily }}>
+                      {post.comments}
+                    </Typography>
+                  </Box>
+
+                  <Box sx={{ display: "flex", alignItems: "center", gap: "2px" }}>
+                    <img src="/assets/icons/reached.svg" alt="" />
+                    <Typography sx={{ fontSize: "13px", paddingLeft: "5px" }}>
+                      {post.shares}
+                    </Typography>
+                  </Box>
+                </Box>
               </Box>
             </Stack>
           </Box>

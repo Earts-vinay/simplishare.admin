@@ -4,6 +4,7 @@ import colors from "../utils/colors";
 import Target from "../components/Home_Screens/Target";
 import DailySales from "../components/Home_Screens/DailySales";
 import Instagram from "../components/Home_Screens/Instagram";
+import fontFamily from "../utils/fonts";
 
 const Home = () => {
   return (
@@ -27,7 +28,7 @@ const Home = () => {
             <InputBase
               placeholder="What is there in your mind?"
               inputProps={{ "aria-label": "search" }}
-              sx={{ flex: 1 }}
+              sx={{ flex: 1,fontFamily }}
             />
           </Box>
         </Box>

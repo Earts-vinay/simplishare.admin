@@ -1,6 +1,7 @@
 import { Box, Grid, Paper, Typography } from '@mui/material';
 import React from 'react';
 import colors from '../../utils/colors';
+import fontFamily from '../../utils/fonts';
 import Chart from "react-apexcharts";
 
 // Data for stats and chart
@@ -48,12 +49,12 @@ const Target = () => {
       <Paper elevation={0} sx={{ p: 1, borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px" }}>
         <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <img src="/assets/icons/target_icon.svg" alt="" />
-          <Typography variant="h6" gutterBottom>
+          <Typography variant="h6" sx={{fontFamily}}>
             {statsData.username}
           </Typography>
         </Box>
         <Chart options={chartOptions} series={chartSeries} type="area" height={250} />
-        <Box sx={{ backgroundColor: colors.lightgray, padding: "7px", borderRadius: "10px" }}>
+        <Box sx={{ backgroundColor: colors.lightgray, padding: "7px", borderRadius: "10px",fontFamily }}>
           <Box
             sx={{
               display: "flex",
@@ -69,18 +70,17 @@ const Target = () => {
           >
             {statsData.stats.slice(0, 3).map((stat, index) => (
               <Box key={index}>
-                <Box sx={{ display: "flex", gap: "10px", padding: "5px", alignItems: "center" }}>
-                  
-                  <Typography variant="h6" fontWeight="bold" textAlign="center">
+                <Box sx={{ display: "flex", gap: "5px", padding: "4px", alignItems: "center" }}>
+                  <Typography variant="h6" fontWeight="bold" textAlign="center" sx={{fontFamily}}>
                     {stat.value}
                   </Typography>
-                  <Typography variant="caption" color="error">
-                    {stat.change}
+                  <Typography variant="caption" color={colors.darkgray} sx={{fontFamily}} >
+                    +{stat.change}
                   </Typography>
                 </Box>
                <Box sx={{display:"flex",alignItems:"center",gap:"3px"}}>
                <img src={stat.img} alt={stat.label} style={{ width: "18px", height: "18px" }} />
-                <Typography variant="caption" color={colors.red}>
+                <Typography variant="caption" color={colors.red} sx={{fontFamily}}>
                   {stat.label}
                 </Typography>
                </Box>
@@ -100,18 +100,18 @@ const Target = () => {
           >
             {statsData.stats.slice(3, 6).map((stat, index) => (
               <Box key={index}>
-                <Box sx={{ display: "flex", gap: "10px", padding: "5px", alignItems: "center" }}>
+                <Box sx={{ display: "flex", gap: "5px", padding: "5px", alignItems: "center" }}>
                  
-                  <Typography variant="h6" fontWeight="bold" textAlign="center">
+                  <Typography variant="h6" fontWeight="bold" textAlign="center" sx={{fontFamily}}>
                     {stat.value}
                   </Typography>
-                  <Typography variant="caption" color="error">
-                    {stat.change}
+                  <Typography variant="caption" color={colors.darkgray} sx={{fontFamily}}>
+                    +{stat.change}
                   </Typography>
                 </Box>
                 <Box sx={{display:"flex",alignItems:"center",gap:"3px"}}>
                <img src={stat.img} alt={stat.label} style={{ width: "18px", height: "18px" }} />
-                <Typography variant="caption" color={colors.darkgray}>
+                <Typography variant="caption" color={colors.darkgray} sx={{fontFamily}}>
                   {stat.label}
                 </Typography>
                </Box>
@@ -130,18 +130,17 @@ const Target = () => {
           >
             {statsData.stats.slice(6, 9).map((stat, index) => (
               <Box key={index}>
-                <Box sx={{ display: "flex", gap: "10px", padding: "5px", alignItems: "center" }}>
-                  
-                  <Typography variant="h6" fontWeight="bold" textAlign="center">
+                <Box sx={{ display: "flex", gap: "5px", padding: "5px", alignItems: "center" }}>     
+                  <Typography variant="h6" fontWeight="bold" textAlign="center" sx={{fontFamily}}>
                     {stat.value}
                   </Typography>
-                  <Typography variant="caption" color="error">
-                    {stat.change}
+                  <Typography variant="caption" color={colors.darkgray} sx={{fontFamily}}>
+                    +{stat.change}
                   </Typography>
                 </Box>
                 <Box sx={{display:"flex",alignItems:"center",gap:"3px"}}>
                <img src={stat.img} alt={stat.label} style={{ width: "18px", height: "18px" }} />
-                <Typography variant="caption" color={colors.darkgray}>
+                <Typography variant="caption" color={colors.darkgray} sx={{fontFamily}}>
                   {stat.label}
                 </Typography>
                </Box>

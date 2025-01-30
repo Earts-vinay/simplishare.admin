@@ -2,13 +2,10 @@ import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, IconButton, InputBase, Box, Avatar, InputAdornment, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import HomeIcon from '@mui/icons-material/Home';
-import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
-import PostAddIcon from '@mui/icons-material/PostAdd';
-import AssessmentIcon from '@mui/icons-material/Assessment';
 import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import colors from '../utils/colors';
+import fontFamily from '../utils/fonts';
 
 // Reusable Navbar Item component with routing
 const NavbarItem = ({ icon, label, to, showLabel }) => (
@@ -16,6 +13,7 @@ const NavbarItem = ({ icon, label, to, showLabel }) => (
     to={to}
     style={({ isActive }) => ({
       textDecoration: 'none',
+      fontFamily,
       color: isActive ? colors.red : colors.semigray, // Apply red color when active
     })}
   >
@@ -99,8 +97,8 @@ const Navbar = () => {
           </Box>
 
           <Box sx={{display:"flex",gap:"10px",alignItems:"center"}}>
-            <Avatar sx={{ bgcolor: colors.red, color: colors.white, borderRadius: '10px' }}>UN</Avatar>
-            <Typography sx={{color:colors.black}}>User Name</Typography>
+            <Avatar sx={{ bgcolor: colors.red, color: colors.white, borderRadius: '10px',fontFamily }}>UN</Avatar>
+            <Typography sx={{color:colors.black,fontFamily}}>User Name</Typography>
           </Box>
         </Toolbar>
       </AppBar>
