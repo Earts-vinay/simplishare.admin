@@ -70,8 +70,8 @@ const instagramData = [
 
 const Instagram = () => {
   return (
-    <Grid item xs={12} md={3}>
-      <Paper elevation={0} sx={{ p: 1, borderTopRightRadius: "10px", borderBottomRightRadius: "10px" }}>
+    <Box sx={{width:"33%"}}>
+      <Box sx={{ p: 1, borderTopRightRadius: "10px", borderBottomRightRadius: "10px",backgroundColor:"white" }}>
         <Box sx={{ display: 'flex', alignItems: "center", gap: "10px", marginY:"8px" }}>
           <img src="/assets/icons/instagram.svg" alt="" />
           <Typography variant="h6" sx={{ fontFamily }}>
@@ -79,7 +79,7 @@ const Instagram = () => {
           </Typography>
         </Box>
         {instagramData.map((post) => (
-          <Box key={post.id} sx={{ mb: 1.5, backgroundColor: colors.lightgray, p: 1, borderRadius: "10px" }}>
+          <Box key={post.id} sx={{ mb: 0.5, backgroundColor: colors.lightgray, p: 1, borderRadius: "10px" }}>
             <Stack direction="row" spacing={2} alignItems="center" mb={1}>
               <Box>
                 <img src={post.image} alt="" style={{ width: "100px", height: "70px", objectFit: "cover" }} />
@@ -122,8 +122,8 @@ const Instagram = () => {
             </Stack>
           </Box>
         ))}
-      </Paper>
-    </Grid>
+      </Box>
+    </Box>
   );
 };
 

@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Card, CardContent, Grid, Typography, Paper } from "@mui/material";
 import Chart from "react-apexcharts";
 import fontFamily from "../../utils/fonts";
+import colors from "../../utils/colors";
 
 const salesData = [
   { store: "Store 1", sales: 688000, returns: 25000 },
@@ -43,9 +44,9 @@ const chartSeries = [
 
 const DailySales = () => {
   return (
-    <Grid item xs={12} md={3}>
-      <Paper elevation={0} sx={{ p: 2 }}>
-        <Box >
+    <Box sx={{width:"33%"}}>
+      <Box  sx={{ p: 2,backgroundColor:colors.white }}>
+      
           <Box sx={{ display: 'flex', alignItems: "center", gap: "10px" }}>
             <img src="/assets/icons/daily_sales_icon.svg" alt="" />
             <Typography variant="h6" sx={{fontFamily}}>
@@ -58,7 +59,7 @@ const DailySales = () => {
               options={chartOptions}
               series={chartSeries}
               type="bar"
-              height={243}
+              height={220}
             />
           </Box>
           <Box>
@@ -68,7 +69,7 @@ const DailySales = () => {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  mb: 1,
+                  mb: 0.7,
                   paddingX: "10px",
                   paddingY: "0px",
                   backgroundColor: "#f5f5f5",
@@ -108,8 +109,8 @@ const DailySales = () => {
             ))}
           </Box>
         </Box>
-      </Paper>
-    </Grid>
+      </Box>
+  
   );
 };
 

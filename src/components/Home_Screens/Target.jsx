@@ -45,15 +45,15 @@ const Target = () => {
   const chartSeries = statsData.chartData.series;
 
   return (
-    <Grid item xs={12} md={3}>
-      <Paper elevation={0} sx={{ p: 1, borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px" }}>
+    <Box sx={{width:"33%"}}>
+      <Box  sx={{ p: 1, borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px",backgroundColor:colors.white }}>
         <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <img src="/assets/icons/target_icon.svg" alt="" />
           <Typography variant="h6" sx={{fontFamily}}>
             {statsData.username}
           </Typography>
         </Box>
-        <Chart options={chartOptions} series={chartSeries} type="area" height={250} />
+        <Chart options={chartOptions} series={chartSeries} type="area" height={220} />
         <Box sx={{ backgroundColor: colors.lightgray, padding: "7px", borderRadius: "10px",fontFamily }}>
           <Box
             sx={{
@@ -148,8 +148,8 @@ const Target = () => {
             ))}
           </Box>
         </Box>
-      </Paper>
-    </Grid>
+      </Box>
+    </Box>
   );
 };
 

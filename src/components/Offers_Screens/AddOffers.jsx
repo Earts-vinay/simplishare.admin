@@ -6,15 +6,21 @@ import CustomTextField from '../Custom/CustomTextField';
 import colors from '../../utils/colors';
 import CustomButton from '../Custom/CustomButton';
 import { useNavigate } from 'react-router-dom';
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import dayjs from "dayjs";
 
 const AddOffers = () => {
     const [selectedOfferType, setSelectedOfferType] = useState('');
     const [discount, setDiscount] = useState(10);
-     const navigate = useNavigate();
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
+    const navigate = useNavigate();
 
     const handlenav = () => {
         navigate("/offers");
-      }
+    }
     return (
         <Container sx={{ flexGrow: 1, paddingTop: 10 }}>
             <Typography sx={{ fontFamily }}>Offers /</Typography>
@@ -65,31 +71,64 @@ const AddOffers = () => {
                         </Box>
 
                         {/* Start & End Date */}
-                        <Typography sx={{fontFamily, my:1}}>Enter start date and End date of the offer</Typography>
-                        <Box sx={{ display: 'flex', gap: 2, width:"60%" }}>
-                            <CustomTextField label="Start date" type="date" InputLabelProps={{ shrink: true }}/>
-                            <CustomTextField label="End date" type="date" InputLabelProps={{ shrink: true }}/>
-                        </Box>
+                        <Typography sx={{ fontFamily, my: 1 }}>Enter start date and End date of the offer</Typography>
+
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <Box sx={{ display: "flex", gap: 2, width: "80%" }}>
+                                <DatePicker
+                                    label="Start Date"
+                                    value={startDate}
+                                    onChange={(newValue) => setStartDate(newValue)}
+                                    slotProps={{
+                                        textField: {
+                                            sx: {
+                                                height: 50,
+                                                "& .MuiInputBase-root": { height: 50 },
+                                                "& .MuiInputBase-input": { fontFamily }, // Font for entered text
+                                                "& .MuiInputLabel-root": { fontFamily } // Font for label
+                                            }
+                                        }
+                                    }}
+                                />
+
+                                <DatePicker
+                                    label="End Date"
+                                    value={endDate}
+                                    onChange={(newValue) => setEndDate(newValue)}
+                                    minDate={startDate}
+                                    slotProps={{
+                                        textField: {
+                                            sx: {
+                                                height: 50,
+                                                "& .MuiInputBase-root": { height: 50 },
+                                                "& .MuiInputBase-input": { fontFamily }, 
+                                                "& .MuiInputLabel-root": { fontFamily } 
+                                            }
+                                        }
+                                    }}
+                                />
+                            </Box>
+                        </LocalizationProvider>
 
                         {/* Minimum Spend Amount & Coupon Code */}
-                        <Box sx={{ display: 'flex', gap: 2, my: 1,width:"60%" }}>
-                           <Box sx={{width:"100%" }}>
-                           <Typography sx={{fontFamily }}>Minimum Spend Amount</Typography>
-                            <CustomTextField placeholder="Enter Minimum Spend Amount"  />
-                           </Box>
-                            <Box sx={{width:"100%" }}>
-                            <Typography sx={{fontFamily}}>Coupon Code</Typography>
-                            <CustomTextField placeholder="Enter Coupon Code"  />
+                        <Box sx={{ display: 'flex', gap: 2, my: 1, width: "60%" }}>
+                            <Box sx={{ width: "100%" }}>
+                                <Typography sx={{ fontFamily }}>Minimum Spend Amount</Typography>
+                                <CustomTextField placeholder="Enter Minimum Spend Amount" />
+                            </Box>
+                            <Box sx={{ width: "100%" }}>
+                                <Typography sx={{ fontFamily }}>Coupon Code</Typography>
+                                <CustomTextField placeholder="Enter Coupon Code" />
                             </Box>
                         </Box>
 
                         {/* Audience Selection */}
-                      <Box sx={{my:1}}>
-                      <CustomDropdown label="Select Audience">
-                            <MenuItem value="public">Public</MenuItem>
-                            <MenuItem value="private">Private</MenuItem>
-                        </CustomDropdown>
-                      </Box>
+                        <Box sx={{ my: 1 }}>
+                            <CustomDropdown label="Select Audience">
+                                <MenuItem value="public">Public</MenuItem>
+                                <MenuItem value="private">Private</MenuItem>
+                            </CustomDropdown>
+                        </Box>
 
                         {/* Offer Status */}
                         <CustomDropdown label="Offer Status">
@@ -98,9 +137,11 @@ const AddOffers = () => {
                             <MenuItem value="expired">Expired</MenuItem>
                         </CustomDropdown>
 
+                        
+
                         {/* Submit Button */}
-                        <Box sx={{textAlign:'end', my:1.5}}>
-                        <CustomButton onClick={handlenav}>Add Offer</CustomButton>
+                        <Box sx={{ textAlign: 'end', my: 1.5 }}>
+                            <CustomButton onClick={handlenav}>Add Offer</CustomButton>
                         </Box>
                     </Box>
                 )}

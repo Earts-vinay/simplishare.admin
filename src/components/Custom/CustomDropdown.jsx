@@ -27,10 +27,10 @@ const CustomDropdown = ({ label, value, onChange, sx, children, placeholder, req
       }}
       sx={{
         "&:hover .MuiOutlinedInput-root": {
-          "& > fieldset": { border: `1px solid ${colors.darkgray}` },
+          "& > fieldset": { border: `1px solid ${colors.semigray}` },
         },
         "& .MuiOutlinedInput-root": {
-          "& > fieldset": { border: `1px solid ${colors.darkgray}` },
+          "& > fieldset": { border: `1px solid ${colors.semigray}` },
         },
         "& .MuiInputLabel-root": {
           fontFamily: fontFamily, // Apply font family to label

@@ -104,7 +104,9 @@ const GenPost = () => {
               <Typography sx={{ fontFamily }}>Template Name</Typography>
             </Box>
           </Box>
-
+           <Box sx={{textAlign:"end"}}>
+            <CustomButton>Generate</CustomButton>
+           </Box>
         </Box>
       )}
 

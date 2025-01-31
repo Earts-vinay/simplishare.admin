@@ -18,10 +18,10 @@ const CustomTextField = ({ label, value, onChange, hasBorder,type,width, ...rest
       fullWidth
       sx={{
         "&:hover .MuiOutlinedInput-root": {
-            "& > fieldset": { border: hasBorder ? `1px solid ${colors.blue}` : `1px solid ${colors.blue}` }, // Apply green border if hasBorder is true, otherwise default border color
+            "& > fieldset": { border: hasBorder ? `1px solid ${colors.semigray}` : `1px solid ${colors.semigray}` }, // Apply green border if hasBorder is true, otherwise default border color
           },
         "& .MuiOutlinedInput-root": {
-            "& > fieldset": { border: hasBorder ? `1px solid ${colors.blue}` : `1px solid ${colors.blue}` }, // Apply green border if hasBorder is true, otherwise default border color
+            "& > fieldset": { border: hasBorder ? `1px solid ${colors.semigray}` : `1px solid ${colors.semigray}` }, // Apply green border if hasBorder is true, otherwise default border color
           },
           width:{width}
       }}
