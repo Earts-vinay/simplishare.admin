@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SetUp_TwoFactor from './secureAccount/SetUp_TwoFactor'
+import SetUp_TwoFactor from '../Login_Screens/signup_content/secureAccount/SetUp_TwoFactor'
 
 const SecureAccount = () => {
   // State to track internal screens within this step
