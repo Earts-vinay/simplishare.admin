@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Accordion,
@@ -10,17 +10,27 @@ import {
   MenuItem,
   Box,
   alpha,
+  DialogContent,
+  DialogActions,
 } from "@mui/material";
 import { IoIosAddCircleOutline, IoIosArrowDropdown } from "react-icons/io";
 import colors from "../utils/colors";
 import { IoAdd } from "react-icons/io5";
 import fontFamily from "../utils/fonts";
+import CustomDialog from "../components/Custom/CustomDialog";
+import CustomButton from "../components/Custom/CustomButton";
+import BrandLogo from "../components/Brand_Screens/BrandLogo";
+import ColorPalette from "../components/Brand_Screens/ColorPalette";
+import BrandFonts from "../components/Brand_Screens/BrandFonts";
+import CustomDropdown from "../components/Custom/CustomDropdown";
+import AddVoice from "../components/Brand_Screens/AddVoice";
+import TemplateStyle from "../components/Brand_Screens/TemplateStyle";
 
 const CustomAccordion = ({ title, buttonText, buttonWidth, children, defaultExpanded }) => (
-  <Accordion elevation={0} sx={{ marginBottom: 3 }} defaultExpanded={defaultExpanded}>
+  <Accordion elevation={0} sx={{ marginBottom: 2 }} defaultExpanded={defaultExpanded}>
     <AccordionSummary expandIcon={<IoIosArrowDropdown fontSize={22} />}>
       <Box sx={{ display: "flex", justifyContent: "space-between", flex: 1 }}>
-        <Typography sx={{fontFamily}}>{title}</Typography>
+        <Typography sx={{ fontFamily }}>{title}</Typography>
         {buttonText && (
           <Button
             startIcon={<IoIosAddCircleOutline />}
@@ -36,102 +46,83 @@ const CustomAccordion = ({ title, buttonText, buttonWidth, children, defaultExpa
               marginRight: "10px",
               "&:hover": {
                 backgroundColor: alpha(colors.red, 0.05),
-                color: "#000", // Optional: Change text color on hover for better contrast
+                color: "#000",
               },
             }}
           >
             {buttonText}
           </Button>
-
         )}
       </Box>
     </AccordionSummary>
-    <AccordionDetails>{children}</AccordionDetails>
+    <AccordionDetails >{children}</AccordionDetails>
   </Accordion>
 );
 
-const BrandScreen = () => (
-  <Container sx={{ flexGrow: 1, paddingTop: 10 }}>
-    <Typography variant="p" sx={{fontFamily}}>Brand /</Typography>
-    <Typography variant="h5" sx={{ marginY: 2,fontFamily }}>
-      Untitled Brand Kit
-    </Typography>
+const BrandScreen = () => {
+  const [openLogoDialog, setOpenLogoDialog] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
 
-    <CustomAccordion title="Brand Logo" buttonText="Upload" buttonWidth="100px" defaultExpanded>
-  <Box sx={{ display: "flex", flexDirection: "row",gap:"20px", alignItems: "center" }}>
-    
-    <Button
-      component="label"
-      variant="outlined"
-      sx={{
-        border: "1px solid gray",
-        color: "gray",
-        fontFamily,
-        textTransform: "capitalize",
-        padding:"10px",
-        "&:hover": {
-          backgroundColor: "#f5f5f5",
-        },
-      }}
-    >
-     <Box sx={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",paddingTop:"5px",}}>
-     <IoAdd fontSize="35px"/>
-     <Typography sx={{paddingTop:"10px",fontFamily}}>New Logo</Typography>
-     </Box>
-      <input
-        type="file"
-        hidden
-        accept="image/*"
-        onChange={(e) => {
-          const file = e.target.files[0];
-          if (file) {
-            console.log("Uploaded File:", file);
-            // Add logic to display the uploaded image or handle it
-          }
-        }}
-      />
-    </Button>
+  const handleOpenDialog = () => setOpenLogoDialog(true);
+  const handleCloseDialog = () => setOpenLogoDialog(false);
 
-    <img
-      src="/assets/logos/simpleshare_logo.svg"
-      alt="Brand Logo"
-      style={{ width: "100px", height: "100px", marginBottom: "10px" }}
-    />
-  </Box>
-</CustomAccordion>
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setSelectedFile(URL.createObjectURL(file)); // Preview image
+    }
+  };
 
+  return (
 
-    <CustomAccordion title="Colour Palette" buttonText="New Palette" buttonWidth="140px">
-      palette
-    </CustomAccordion>
+    <Container sx={{ flexGrow: 1, paddingTop: 10 }}>
+      <Typography variant="p" sx={{fontFamily}}>Brand /</Typography>
+      <Typography variant="h5" sx={{ marginY: 1,fontFamily }}>
+        Untitled Brand Kit
+      </Typography>
 
-    <CustomAccordion title="Fonts" buttonText="New Font" buttonWidth="120px">
-      Fonts
-    </CustomAccordion>
+      <CustomAccordion title="Brand Logo" buttonText="Upload" buttonWidth="100px" defaultExpanded>
+       <BrandLogo/>
+      </CustomAccordion>
 
-    <CustomAccordion title="Text Style Guide" buttonText="Import" buttonWidth="100px">
-      <Box>
-        <Typography sx={{fontFamily}}>Type Style</Typography>
-        <h1>Heading 1</h1>
-        <h2>Heading 2</h2>
-        <h3>Heading 3</h3>
-        <h4>Heading 4</h4>
-        <h5>Heading 5</h5>
-        <h6>Heading 6</h6>
-      </Box>
-    </CustomAccordion>
+      <CustomAccordion title="Colour Palette" buttonText="New Palette" buttonWidth="140px">
+       <ColorPalette/>
+      </CustomAccordion>
 
-    <CustomAccordion title="Language">
-      <Select defaultValue="India" sx={{ width: 200 }}>
+      <CustomAccordion title="Fonts" buttonText="New Font" buttonWidth="120px">
+      <BrandFonts/>
+      </CustomAccordion>
+
+      <CustomAccordion title="Text Style Guide" buttonText="Import" buttonWidth="100px">
+        <Box>
+          <Typography sx={{ fontFamily }}>Type Style</Typography>
+          <h1>Heading 1</h1>
+          <h2>Heading 2</h2>
+          <h3>Heading 3</h3>
+          <h4>Heading 4</h4>
+          <h5>Heading 5</h5>
+          <h6>Heading 6</h6>
+        </Box>
+      </CustomAccordion>
+
+      <CustomAccordion title="Language">
+       <Box sx={{width:"40%"}}>
+       <CustomDropdown label="Slect language">
         <MenuItem value="India">India</MenuItem>
         <MenuItem value="UK">English UK</MenuItem>
-      </Select>
-    </CustomAccordion>
+        </CustomDropdown>
+       </Box>
+      </CustomAccordion>
 
-    <CustomAccordion title="Content Framework/Voices" buttonText="Add Voice" buttonWidth="130px" />
+      <CustomAccordion title="Content Framework/Voices" buttonText="Add Voice" buttonWidth="130px" >
+       <AddVoice/>
+      </CustomAccordion>
 
-    <CustomAccordion title="Template Style" buttonText="Add Style" buttonWidth="130px" />
-  </Container>
-);
+      <CustomAccordion title="Template Style" buttonText="Add Style" buttonWidth="130px" >
+        <TemplateStyle/>
+        </CustomAccordion>
+    </Container>
+  );
+};
 
 export default BrandScreen;

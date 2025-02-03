@@ -8,7 +8,8 @@ import {
   Container,
   Typography,
 } from "@mui/material";
-import { fontFamily, styled } from "@mui/system";
+import { styled } from "@mui/system";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import CreateProfile from "../components/Onboard_Screens/CreateProfile";
 import ProfessionalInfo from "../components/Onboard_Screens/ProfessionalInfo";
 import SecureAccount from "../components/Onboard_Screens/SecureAccount";
@@ -19,31 +20,30 @@ import CustomButton from "../components/Custom/CustomButton";
 // Custom styles
 const CustomStepConnector = styled(StepConnector)(({ theme }) => ({
   [`& .MuiStepConnector-line`]: {
-    borderColor: "#D3D3D3", // Gray connector color
+    borderColor: "#D3D3D3",
     borderTopWidth: 2,
   },
 }));
 
-const CustomStepLabel = styled(StepLabel)(({ theme, active }) => ({
+const CustomStepLabel = styled(StepLabel)(({ active }) => ({
   "& .MuiStepLabel-label": {
     fontSize: "14px",
     fontWeight: "normal",
-    fontFamily,
-    color: active ? "red !important" : "#B0B0B0", // Active is red, inactive is gray
+    color: active ? "red !important" : "#B0B0B0",
   },
   "& .MuiStepIcon-root": {
-    color: active ? "red !important" : "#B0B0B0", // Active step number in red
+    color: active ? "red !important" : "#B0B0B0",
     border: active ? `1px solid ${colors.red}` : "1px solid #B0B0B0",
     backgroundColor: active ? "red !important" : "#B0B0B0",
     borderRadius: "5px",
-    fontFamily,
     width: "25px",
     height: "25px",
   },
 }));
 
 const Onboard = () => {
-  const [activeStep, setActiveStep] = useState(0); // Start at step 1 like in the image
+  const [activeStep, setActiveStep] = useState(0);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const steps = [
     "Create Profile",
@@ -53,7 +53,11 @@ const Onboard = () => {
   ];
 
   const handleNext = () => {
-    setActiveStep((prevStep) => prevStep + 1);
+    if (activeStep === steps.length - 1) {
+      navigate("/"); // Redirect to home when "Finish" is clicked
+    } else {
+      setActiveStep((prevStep) => prevStep + 1);
+    }
   };
 
   const handleBack = () => {
@@ -77,23 +81,15 @@ const Onboard = () => {
 
   return (
     <Container>
-      {/* Stepper */}
       <Box sx={{ width: "100%", py: 2 }}>
-        <Stepper
-          activeStep={activeStep}
-          alternativeLabel
-          connector={<CustomStepConnector />}
-        >
+        <Stepper activeStep={activeStep} alternativeLabel connector={<CustomStepConnector />}>
           {steps.map((label, index) => (
             <Step key={label}>
-              <CustomStepLabel active={activeStep === index}>
-                {label}
-              </CustomStepLabel>
+              <CustomStepLabel active={activeStep === index}>{label}</CustomStepLabel>
             </Step>
           ))}
         </Stepper>
 
-        {/* Step Content */}
         <Box
           sx={{
             mt: 2,
@@ -104,7 +100,6 @@ const Onboard = () => {
         >
           {renderStepContent(activeStep)}
 
-          {/* Buttons */}
           <Box sx={{ display: "flex", justifyContent: "flex-end", gap: "10px" }}>
             <CustomButton disabled={activeStep === 0} onClick={handleBack}>
               Back
