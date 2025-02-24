@@ -78,7 +78,7 @@ const Offers = () => {
 
           <Box  sx={{ padding: "0px !important",  height: "calc(100vh - 260px)" }}>
             <TabPanel value={selectedTab} index={0}>
-              <DaysOffers />
+             <DaysOffers />
             </TabPanel>
             <TabPanel value={selectedTab} index={1}>
               <OffersByValley />
