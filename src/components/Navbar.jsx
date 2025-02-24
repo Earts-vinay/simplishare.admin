@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Box, Avatar, LinearProgress, Menu, MenuItem } from '@mui/material';
 import { IoIosArrowDown } from "react-icons/io";
 import { useMediaQuery } from '@mui/material';
@@ -62,11 +62,18 @@ const Navbar = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+   const navigate = useNavigate();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
+  const handleProfile = (event) => {
+    navigate("/profile")
+  };
+  const handleSettings = (event) => {
+    navigate("/settings")
+  };
+  
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -119,8 +126,8 @@ const Navbar = () => {
 
             {/* Dropdown Menu */}
             <Menu anchorEl={anchorEl} open={open} onClose={handleClose} sx={{ mt: 3, width: "350px" }}>
-              <MenuItem onClick={handleClose} sx={{ px: 6, fontFamily }}>Profile</MenuItem>
-              <MenuItem onClick={handleClose} sx={{ px: 6, fontFamily }}>Settings</MenuItem>
+              <MenuItem onClick={handleProfile} sx={{ px: 6, fontFamily }}>Profile</MenuItem>
+              <MenuItem onClick={handleSettings} sx={{ px: 6, fontFamily }}>Settings</MenuItem>
               <MenuItem onClick={handleClose} sx={{ px: 6, fontFamily }}>Logout</MenuItem>
             </Menu>
 

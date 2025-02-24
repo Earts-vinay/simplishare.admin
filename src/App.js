@@ -9,6 +9,8 @@ import Analysts from './pages/Analysts';
 import Audience from './pages/Audience';
 import AddOffers from './components/Offers_Screens/AddOffers';
 import Onboard from './pages/Onboard';
+import Settings from './pages/Settings';
+import Profile from './pages/Profile';
 
 const AppContent = () => {
   const location = useLocation();
@@ -26,6 +28,8 @@ const AppContent = () => {
         <Route path="/offers/addoffers" element={<AddOffers />} />
         <Route path="/genpost" element={<GenPost />} />
         <Route path="/analysts" element={<Analysts />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </>
   );

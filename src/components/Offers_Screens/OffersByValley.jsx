@@ -7,6 +7,9 @@ import colors from "../../utils/colors";
 const offers = [
   { id: 1, title: "30% off up to ₹300.", details: "Applicable for minimum purchase of ₹100.00", active: true },
   { id: 2, title: "20% off up to ₹1500.", details: "Applicable for minimum purchase of ₹10,000.00", active: true },
+  { id: 3, title: "20% off up to ₹1500.", details: "Applicable for minimum purchase of ₹10,000.00", active: true },
+  { id: 4, title: "20% off up to ₹1500.", details: "Applicable for minimum purchase of ₹10,000.00", active: true },
+
 ];
 
 const OffersByValley = () => {
