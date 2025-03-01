@@ -101,8 +101,8 @@ const AddOffers = () => {
                                             sx: {
                                                 height: 50,
                                                 "& .MuiInputBase-root": { height: 50 },
-                                                "& .MuiInputBase-input": { fontFamily }, 
-                                                "& .MuiInputLabel-root": { fontFamily } 
+                                                "& .MuiInputBase-input": { fontFamily },
+                                                "& .MuiInputLabel-root": { fontFamily }
                                             }
                                         }
                                     }}
@@ -110,16 +110,49 @@ const AddOffers = () => {
                             </Box>
                         </LocalizationProvider>
 
+                        {/* Offer Status */}
+                      <Box sx={{my:1}}>
+                      <CustomDropdown label="Select Offer Status">
+                            <MenuItem value="active">Buy 1 Get 1 Free</MenuItem>
+                            <MenuItem value="paused">Buy 2 Get 1 Free</MenuItem>
+                            <MenuItem value="expired">Buy 3 Get 1 Free</MenuItem>
+                        </CustomDropdown>
+                      </Box>
+                      <Box sx={{my:1}}>
+                      <CustomDropdown label="Applicable Products">
+                            <MenuItem value="active">Active</MenuItem>
+                            <MenuItem value="paused">Paused</MenuItem>
+                            <MenuItem value="expired">Expired</MenuItem>
+                        </CustomDropdown>
+                      </Box>
+
                         {/* Minimum Spend Amount & Coupon Code */}
-                        <Box sx={{ display: 'flex', gap: 2, my: 1, width: "60%" }}>
+                        <Box sx={{ display: 'flex', gap: 2, my: 2, width: "70%" }}>
                             <Box sx={{ width: "100%" }}>
                                 <Typography sx={{ fontFamily }}>Minimum Spend Amount</Typography>
                                 <CustomTextField placeholder="Enter Minimum Spend Amount" />
                             </Box>
                             <Box sx={{ width: "100%" }}>
+                                <Typography sx={{ fontFamily }}>Discount / Value of free item</Typography>
+                                <CustomTextField placeholder="Enter Value" />
+                            </Box>
+                            <Box sx={{ width: "100%" }}>
                                 <Typography sx={{ fontFamily }}>Coupon Code</Typography>
                                 <CustomTextField placeholder="Enter Coupon Code" />
                             </Box>
+                        </Box>
+
+                        <Box >
+                        <Typography sx={{ fontFamily }}>Upload Banner / Offer Images </Typography>
+                        <Box sx={{display:"flex",justifyContent:"space-between",alignItems:"center",borderRadius:"10px",border:`1px solid ${colors.semigray}`,p:1,my:2}}>
+                           <Typography sx={{fontFamily,fontSize:"14px",color:colors.darkgray}}>Choose Images</Typography>
+                          <Box sx={{display:"flex",gap:"50px",alignItems:"center"}}>
+
+                          <img src="/assets/icons/cloud.svg" alt="Cloud Icon" style={{ width: "30px" }} />
+                          <Typography sx={{fontFamily}}>OR</Typography>
+                          <CustomButton>Upload</CustomButton>
+                          </Box>
+                        </Box>
                         </Box>
 
                         {/* Audience Selection */}
@@ -137,7 +170,7 @@ const AddOffers = () => {
                             <MenuItem value="expired">Expired</MenuItem>
                         </CustomDropdown>
 
-                        
+
 
                         {/* Submit Button */}
                         <Box sx={{ textAlign: 'end', my: 1.5 }}>

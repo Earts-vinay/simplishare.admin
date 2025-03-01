@@ -11,6 +11,9 @@ import AddOffers from './components/Offers_Screens/AddOffers';
 import Onboard from './pages/Onboard';
 import Settings from './pages/Settings';
 import Profile from './pages/Profile';
+import Drafts from './components/GenAi_Screens/Drafts';
+import UpgradePlan from './components/Profile_Screens/UpgradePlan';
+import Confirmation from './components/Profile_Screens/Confirmation';
 
 const AppContent = () => {
   const location = useLocation();
@@ -27,9 +30,13 @@ const AppContent = () => {
         <Route path="/offers" element={<Offers />} />
         <Route path="/offers/addoffers" element={<AddOffers />} />
         <Route path="/genpost" element={<GenPost />} />
+        <Route path="/genpost/drafts" element={<Drafts />} />
         <Route path="/analysts" element={<Analysts />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/upgrade" element={<UpgradePlan />} />
+        <Route path="/profile/upgrade/confirm" element={<Confirmation />} />
+
       </Routes>
     </>
   );

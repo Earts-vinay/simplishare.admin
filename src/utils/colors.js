@@ -6,7 +6,8 @@ const colors = {
     darkgray: "#707070",  // Example: Primary text color
     semigray: "#CCCCCC", // Example: Secondary text color
     lightgray:"#F9F9F9",
-    white:"#ffff"
+    white:"#ffff",
+    maroon:"#6c130b"
   };
   
   export default colors;

@@ -7,18 +7,27 @@ import CustomDropdown from '../components/Custom/CustomDropdown';
 import { IoIosAddCircleOutline } from 'react-icons/io';
 import { IoAdd } from 'react-icons/io5';
 import CustomButton from '../components/Custom/CustomButton';
+import { useNavigate } from 'react-router-dom';
 
 const GenPost = () => {
   const [isActive, setIsActive] = useState(false);
   const [selectedOption, setSelectedOption] = useState(""); // Track dropdown selection
+  const navigate = useNavigate();
 
   const toggleOffer = () => {
     setIsActive((prev) => !prev);
   };
 
+  const handledraft = () => {
+    navigate("/genpost/drafts");
+  }
+
   return (
     <Container sx={{ flexGrow: 1, paddingTop: 10 }}>
-      <Typography sx={{ fontFamily }}>Auto Gen /</Typography>
+      <Box sx={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+      <Typography sx={{ fontFamily }}> Gen AI / Generate Post</Typography>
+      <CustomButton onClick={handledraft}>Drafts</CustomButton>
+      </Box>
       <Box sx={{ mt: 2, padding: '10px', backgroundColor: 'white', borderRadius: '10px' }}>
         <Card
           sx={{
