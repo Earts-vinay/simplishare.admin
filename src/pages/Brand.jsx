@@ -6,19 +6,13 @@ import {
   AccordionDetails,
   Typography,
   Button,
-  Select,
   MenuItem,
   Box,
   alpha,
-  DialogContent,
-  DialogActions,
 } from "@mui/material";
 import { IoIosAddCircleOutline, IoIosArrowDropdown } from "react-icons/io";
 import colors from "../utils/colors";
-import { IoAdd } from "react-icons/io5";
 import fontFamily from "../utils/fonts";
-import CustomDialog from "../components/Custom/CustomDialog";
-import CustomButton from "../components/Custom/CustomButton";
 import BrandLogo from "../components/Brand_Screens/BrandLogo";
 import ColorPalette from "../components/Brand_Screens/ColorPalette";
 import BrandFonts from "../components/Brand_Screens/BrandFonts";
