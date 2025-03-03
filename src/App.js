@@ -14,6 +14,7 @@ import Profile from './pages/Profile';
 import Drafts from './components/GenAi_Screens/Drafts';
 import UpgradePlan from './components/Profile_Screens/UpgradePlan';
 import Confirmation from './components/Profile_Screens/Confirmation';
+import Calendar from './components/GenAi_Screens/Calender';
 
 const AppContent = () => {
   const location = useLocation();
@@ -31,6 +32,7 @@ const AppContent = () => {
         <Route path="/offers/addoffers" element={<AddOffers />} />
         <Route path="/genpost" element={<GenPost />} />
         <Route path="/genpost/drafts" element={<Drafts />} />
+        <Route path="/genpost/calender" element={<Calendar />} />
         <Route path="/analysts" element={<Analysts />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/profile" element={<Profile />} />
