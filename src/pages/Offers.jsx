@@ -44,15 +44,15 @@ const Offers = () => {
             onChange={handleTabChange}
             sx={{
               borderBottom: "none",
-              minHeight: "40px !important",
-              height: "40px",
+              minHeight: "45px !important",
+              height: "45px",
               ".MuiTabs-flexContainer": {
                 backgroundColor: colors.white,
                 display: "flex",
                 justifyContent: "space-between",
                 borderRadius: "5px",
                 fontFamily,
-              
+                border:`1px solid ${colors.semigray}`,
                 fontWeight: "bold",
               },
             }}
@@ -70,6 +70,7 @@ const Offers = () => {
                   minHeight: "40px",
                   height: "40px",
                   borderRadius: "5px",
+                  
                   fontFamily,
                 }}
               />

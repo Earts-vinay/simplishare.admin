@@ -40,7 +40,7 @@ const GetStarted = () => {
               }}
             >
               <CardContent sx={{ pt: 5, paddingBottom: '5px !important', minHeight: '120px',display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center" }}>
-                <Typography variant="h6" sx={{ fontWeight: 'bold', fontFamily }}>
+                <Typography variant="p" sx={{ fontWeight: 'bold',fontSize:"19.8px",my:1, fontFamily }}>
                   {option.title}
                 </Typography>
                 <Typography color={colors.darkgray} sx={{ fontFamily, fontSize: '12px' }}>

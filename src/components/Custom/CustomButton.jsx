@@ -34,7 +34,7 @@ const CustomButton = ({
         padding: "6px",
         position: position,
         border: `1px solid ${colors.red}`, 
-  
+        borderRadius:"20px",
         color: {color}, 
         fontFamily,
         "&:hover": {
