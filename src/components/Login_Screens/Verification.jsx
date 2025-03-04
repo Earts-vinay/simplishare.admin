@@ -20,14 +20,14 @@ import CustomTextField from "../Custom/CustomTextField";
 import CustomButton from "../Custom/CustomButton";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Verification = () => {
   const navigate = useNavigate();
 
-  const handlesignup = () => {
-    navigate("/signup");
+  const handlelogin = () => {
+    navigate("/");
   }
   const handlehome = () => {
-    navigate("/verify");
+    navigate("/home");
   }
   return (
     <Container sx={{ pt: 10 }}>
@@ -54,35 +54,33 @@ const Login = () => {
           }}
         >
           <Typography mb={2} sx={{ fontFamily, fontWeight: "bold", fontSize: "28px" }}>
-            Login
+            Email Verification
           </Typography>
 
           {/* Social Login Icons */}
           <Box display="flex" gap={2} my={2}>
-            <GoogleIcon fontSize="large" sx={{ color: "#bbb", border: `1px solid ${colors.semigray}`, p: 0.5, borderRadius: "10px", cursor: "pointer" }} />
-            <FacebookIcon fontSize="large" sx={{ color: "#bbb", border: `1px solid ${colors.semigray}`, p: 0.5, borderRadius: "10px", cursor: "pointer" }} />
-            <InstagramIcon fontSize="large" sx={{ color: "#bbb", border: `1px solid ${colors.semigray}`, p: 0.5, borderRadius: "10px", cursor: "pointer" }} />
-            <FaLinkedinIn fontSize={26} style={{ color: "#bbb", border: `1px solid ${colors.semigray}`, padding: "8px", borderRadius: "10px", cursor: "pointer" }} />
+            <Typography varient="p" sx={{fontFamily}}>Please enter 8 - digit verification code that was sent to 
+            abc@xyz.com. The code is valid for 5mins.</Typography>
           </Box>
 
-          <Typography mb={2} sx={{ fontFamily, color: colors.darkgray }}>
-            or use below
-          </Typography>
-
           {/* Input Fields */}
-          <CustomTextField label="Enter your email Id" required/>
-          <CustomTextField type="password" label="Enter password" required/>
+          <Box sx={{display:"flex",justifyContent:"start",flexDirection:"column",width:"100%",fontFamily}}>
+          <Typography sx={{display:"flex",justifyContent:"",fontFamily}}>Enter Verification Code</Typography>
+          <CustomTextField placeholder="Enter your email" required/>
+          </Box>
+          
+         
 
           {/* Forgot Password */}
           <Link href="#" sx={{ alignSelf: "flex-end", mb: 2 }}>
-            <Typography sx={{ fontFamily }}> Forgot password?</Typography>
+            <Typography sx={{ fontFamily }}> Didn't receive the code?</Typography>
           </Link>
 
           {/* Terms Checkbox */}
           <FormControlLabel
             control={<Checkbox />}
             label={
-              <Typography variant="p" sx={{ fontFamily,pt:3 }}>
+              <Typography variant="p" sx={{ fontFamily,pt:2 }}>
                 I have read and agree to simpleShare Terms of Service and Privacy Policy.
               </Typography>
             }
@@ -90,8 +88,8 @@ const Login = () => {
 
           {/* Sign Up & Next Button */}
           <Box display="flex" justifyContent="space-between" alignItems="center" width="100%" pt={9}>
-            <Link href="#"><Typography sx={{ fontFamily }} onClick={handlesignup}>Sign up</Typography></Link>
-            <CustomButton onClick={handlehome}>Login</CustomButton>
+             <Typography sx={{ fontFamily,display:"flex",gap:"10px" }}>Already Registered. <Link href="#"><Typography sx={{ fontFamily }} onClick={handlelogin}> Login</Typography></Link></Typography> 
+            <CustomButton onClick={handlehome}>Submit</CustomButton>
           </Box>
         </Grid>
       </Grid>
@@ -99,4 +97,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Verification;

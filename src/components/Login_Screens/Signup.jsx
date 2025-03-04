@@ -20,14 +20,14 @@ import CustomTextField from "../Custom/CustomTextField";
 import CustomButton from "../Custom/CustomButton";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const SignUp = () => {
   const navigate = useNavigate();
 
-  const handlesignup = () => {
-    navigate("/signup");
+  const handlelogin = () => {
+    navigate("/verify");
   }
   const handlehome = () => {
-    navigate("/verify");
+    navigate("/home");
   }
   return (
     <Container sx={{ pt: 10 }}>
@@ -54,11 +54,11 @@ const Login = () => {
           }}
         >
           <Typography mb={2} sx={{ fontFamily, fontWeight: "bold", fontSize: "28px" }}>
-            Login
+            Signup
           </Typography>
 
           {/* Social Login Icons */}
-          <Box display="flex" gap={2} my={2}>
+          <Box display="flex" gap={2} my={1}>
             <GoogleIcon fontSize="large" sx={{ color: "#bbb", border: `1px solid ${colors.semigray}`, p: 0.5, borderRadius: "10px", cursor: "pointer" }} />
             <FacebookIcon fontSize="large" sx={{ color: "#bbb", border: `1px solid ${colors.semigray}`, p: 0.5, borderRadius: "10px", cursor: "pointer" }} />
             <InstagramIcon fontSize="large" sx={{ color: "#bbb", border: `1px solid ${colors.semigray}`, p: 0.5, borderRadius: "10px", cursor: "pointer" }} />
@@ -72,11 +72,8 @@ const Login = () => {
           {/* Input Fields */}
           <CustomTextField label="Enter your email Id" required/>
           <CustomTextField type="password" label="Enter password" required/>
-
-          {/* Forgot Password */}
-          <Link href="#" sx={{ alignSelf: "flex-end", mb: 2 }}>
-            <Typography sx={{ fontFamily }}> Forgot password?</Typography>
-          </Link>
+          <CustomTextField type="password" label="Re-Enter password" required/>
+      
 
           {/* Terms Checkbox */}
           <FormControlLabel
@@ -90,8 +87,8 @@ const Login = () => {
 
           {/* Sign Up & Next Button */}
           <Box display="flex" justifyContent="space-between" alignItems="center" width="100%" pt={9}>
-            <Link href="#"><Typography sx={{ fontFamily }} onClick={handlesignup}>Sign up</Typography></Link>
-            <CustomButton onClick={handlehome}>Login</CustomButton>
+           <Typography sx={{ fontFamily,display:"flex",gap:"10px" }}>Already Registered. <Link href="#"><Typography sx={{ fontFamily }} onClick={handlelogin}> Login</Typography></Link></Typography> 
+            <CustomButton onClick={handlelogin}>Signup</CustomButton>
           </Box>
         </Grid>
       </Grid>
@@ -99,4 +96,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

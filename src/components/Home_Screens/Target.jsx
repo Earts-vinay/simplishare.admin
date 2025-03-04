@@ -32,7 +32,7 @@ const Target = () => {
   const chartOptions = {
     chart: { type: "area", height: 350, toolbar: { show: false } },
     dataLabels: { enabled: false },
-    stroke: { curve: "smooth" },
+    stroke: { curve: "smooth", width: 1 },
     xaxis: { categories: statsData.chartData.categories },
     colors: ["#6A5ACD", "#FF4500", "#1E90FF"],
     fill: {

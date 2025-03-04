@@ -98,7 +98,7 @@ const Navbar = () => {
           </Box>
 
           <Box sx={{ display: 'flex', gap: isMobile ? 1 : 3 }}>
-            <NavbarItem icon="/assets/icons/home_icon.svg" label="HOME" to="/" showLabel={!isMobile} />
+            <NavbarItem icon="/assets/icons/home_icon.svg" label="HOME" to="/home" showLabel={!isMobile} />
             <NavbarItem icon="/assets/icons/brand_icon.svg" label="BRAND" to="/brand" showLabel={!isMobile} />
             <NavbarItem icon="/assets/icons/audience_icon.svg" label="AUDIENCE" to="/audience" showLabel={!isMobile} />
             <NavbarItem icon='/assets/icons/offers_icon.svg' label="OFFERS" to="/offers" showLabel={!isMobile} />

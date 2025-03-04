@@ -15,17 +15,24 @@ import Drafts from './components/GenAi_Screens/Drafts';
 import UpgradePlan from './components/Profile_Screens/UpgradePlan';
 import Confirmation from './components/Profile_Screens/Confirmation';
 import Calendar from './components/GenAi_Screens/Calender';
+import Login from './components/Login_Screens/Login';
+import Signup from './components/Login_Screens/Signup';
+import Verification from './components/Login_Screens/Verification';
 
 const AppContent = () => {
   const location = useLocation();
-  const showNavbar = location.pathname !== '/onboard'; // Condition to hide navbar on /onboard route
+  const hideNavbarRoutes = ["/", "/signup", "/onboard","/verify"];
+  const showNavbar = !hideNavbarRoutes.includes(location.pathname); // Hide navbar on these routes
 
   return (
     <>
       {showNavbar && <Navbar />}
       <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/verify" element={<Verification />} />
         <Route path="/onboard" element={<Onboard />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/brand" element={<Brand />} />
         <Route path="/audience" element={<Audience />} />
         <Route path="/offers" element={<Offers />} />
@@ -38,7 +45,6 @@ const AppContent = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/upgrade" element={<UpgradePlan />} />
         <Route path="/profile/upgrade/confirm" element={<Confirmation />} />
-
       </Routes>
     </>
   );
