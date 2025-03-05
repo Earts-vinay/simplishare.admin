@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Box, Avatar, LinearProgress, Menu, MenuItem } from '@mui/material';
 import { IoIosArrowDown } from "react-icons/io";
@@ -7,6 +7,7 @@ import { useTheme } from '@mui/material/styles';
 import colors from '../utils/colors';
 import CustomSearch from "./Custom/CustomSearch"
 import fontFamily from '../utils/fonts';
+import Cookies from "js-cookie";
 
 const daysLeft = 5;
 const totalDays = 30;
@@ -61,21 +62,38 @@ const Navbar = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [anchorEl, setAnchorEl] = useState(null);
+  const [user, setUser] = useState(null);
   const open = Boolean(anchorEl);
-   const navigate = useNavigate();
+  const navigate = useNavigate();
+
+  console.log("userdata", user);
+
+  useEffect(() => {
+    // Retrieve user data from localStorage
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser)); // Parse string to object
+    }
+  }, []);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleProfile = (event) => {
+    setAnchorEl(null);
     navigate("/profile")
   };
   const handleSettings = (event) => {
     navigate("/settings")
   };
-  
+
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    Cookies.remove("token");
+    navigate("/");
   };
 
   return (
@@ -109,18 +127,19 @@ const Navbar = () => {
           <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "5px" }}>
             <Box sx={{ display: "flex", gap: "10px", alignItems: "center", cursor: "pointer" }} onClick={handleClick}>
               <Avatar
+                src={user?.picture || ""}
                 sx={{
-                  bgcolor: "red",
-                  color: "white",
+                  bgcolor: user?.picture ? "transparent" : "red", // Transparent if image is available
+                  color: user?.picture ? "inherit" : "white", // Only white text if no image
                   borderRadius: "10px",
                   fontSize: "16px",
                   height: "35px",
                   width: "40px",
                 }}
               >
-                UN
+                {!user?.picture && (user?.name ? user.name[0].toUpperCase() : "U")}
               </Avatar>
-              <Typography sx={{ color: "black", fontFamily }}>User Name</Typography>
+              <Typography sx={{ color: "black", fontFamily }}> {user?.name || "User Name"}</Typography>
               <IoIosArrowDown color="#000" />
             </Box>
 
@@ -128,7 +147,7 @@ const Navbar = () => {
             <Menu anchorEl={anchorEl} open={open} onClose={handleClose} sx={{ mt: 3, width: "350px" }}>
               <MenuItem onClick={handleProfile} sx={{ px: 6, fontFamily }}>Profile</MenuItem>
               <MenuItem onClick={handleSettings} sx={{ px: 6, fontFamily }}>Settings</MenuItem>
-              <MenuItem onClick={handleClose} sx={{ px: 6, fontFamily }}>Logout</MenuItem>
+              <MenuItem onClick={handleLogout} sx={{ px: 6, fontFamily }}>Logout</MenuItem>
             </Menu>
 
             <Box sx={{ width: "100%", position: "relative" }}>

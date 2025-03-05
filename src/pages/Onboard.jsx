@@ -54,7 +54,7 @@ const Onboard = () => {
 
   const handleNext = () => {
     if (activeStep === steps.length - 1) {
-      navigate("/"); // Redirect to home when "Finish" is clicked
+      navigate("/home"); // Redirect to home when "Finish" is clicked
     } else {
       setActiveStep((prevStep) => prevStep + 1);
     }

@@ -10,7 +10,7 @@ import DateRangePicker from "../components/Home_Screens/DateRangePicker";
 const Home = () => {
   return (
 
-    <Container sx={{ flexGrow: 1, pt: 10 }}>
+    <Container maxWidth="xl" sx={{ flexGrow: 1, pt: 10,width:"1250px"}}>
       {/* Search Box */}
       <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", }}>
         <Box
@@ -38,7 +38,7 @@ const Home = () => {
         <DateRangePicker />
       </Box>
 
-      <Box sx={{ display: "flex", }}>
+      <Box sx={{ display: "flex",backgroundColor:colors.white,height:"calc(100vh - 200px)",borderRadius:"10px" }}>
         {/* Target Stats Card */}
         <Target />
 

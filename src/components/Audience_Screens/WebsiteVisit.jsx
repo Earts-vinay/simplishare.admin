@@ -9,8 +9,6 @@ const WebsiteVisit = () => {
         <Box sx={{ mt: 3 }}>
             <Typography sx={{ fontFamily }}>Website URL</Typography>
             <CustomTextField placeholder="Enter website URL" />
-            <Button sx={{ textAlign: "center", marginTop: "10px", }} variant='outlined'>Add more</Button>
-
             <Box sx={{ textAlign: "end", py:3 }}>
                 <CustomButton > Save</CustomButton>
             </Box>

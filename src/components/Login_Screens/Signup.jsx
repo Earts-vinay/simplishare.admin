@@ -24,10 +24,10 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const handlelogin = () => {
-    navigate("/verify");
+    navigate("/");
   }
-  const handlehome = () => {
-    navigate("/home");
+  const handlesignup = () => {
+    navigate("/onboard");
   }
   return (
     <Container sx={{ pt: 10 }}>
@@ -88,7 +88,7 @@ const SignUp = () => {
           {/* Sign Up & Next Button */}
           <Box display="flex" justifyContent="space-between" alignItems="center" width="100%" pt={9}>
            <Typography sx={{ fontFamily,display:"flex",gap:"10px" }}>Already Registered. <Link href="#"><Typography sx={{ fontFamily }} onClick={handlelogin}> Login</Typography></Link></Typography> 
-            <CustomButton onClick={handlelogin}>Signup</CustomButton>
+            <CustomButton onClick={handlesignup}>Signup</CustomButton>
           </Box>
         </Grid>
       </Grid>

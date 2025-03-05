@@ -30,7 +30,7 @@ const statsData = {
 
 const Target = () => {
   const chartOptions = {
-    chart: { type: "area", height: 350, toolbar: { show: false } },
+    chart: { type: "area", height: 400, toolbar: { show: false } },
     dataLabels: { enabled: false },
     stroke: { curve: "smooth", width: 1 },
     xaxis: { categories: statsData.chartData.categories },
@@ -46,15 +46,15 @@ const Target = () => {
 
   return (
     <Box sx={{width:"33%"}}>
-      <Box  sx={{ p: 1, borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px",backgroundColor:colors.white }}>
+      <Box  sx={{ p: 1, }}>
         <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <img src="/assets/icons/target_icon.svg" alt="" />
           <Typography variant="h6" sx={{fontFamily}}>
             {statsData.username}
           </Typography>
         </Box>
-        <Chart options={chartOptions} series={chartSeries} type="area" height={220} />
-        <Box sx={{ backgroundColor: colors.lightgray, padding: "7px", borderRadius: "10px",fontFamily }}>
+        <Chart options={chartOptions} series={chartSeries} type="area" height={280} />
+        <Box sx={{ backgroundColor: colors.lightgray, padding: "7px", borderRadius: "10px",fontFamily , height: "calc(100vh - 555px)", overflowY: "auto",}}>
           <Box
             sx={{
               display: "flex",
@@ -65,7 +65,7 @@ const Target = () => {
               backgroundColor: colors.white,
               borderRadius: "10px",
               py: 1,
-              
+              m:0.5
             }}
           >
             {statsData.stats.slice(0, 3).map((stat, index) => (
@@ -96,6 +96,7 @@ const Target = () => {
               gap: 2,
               borderRadius: "10px",
               padding: "5px",
+              my:1.6
             }}
           >
             {statsData.stats.slice(3, 6).map((stat, index) => (
@@ -126,6 +127,7 @@ const Target = () => {
               flexWrap: "wrap",
               gap: 2,
               borderRadius: "10px",
+              my:1.6
             }}
           >
             {statsData.stats.slice(6, 9).map((stat, index) => (
