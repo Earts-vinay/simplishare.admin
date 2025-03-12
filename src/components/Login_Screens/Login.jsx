@@ -32,7 +32,7 @@ const Login = () => {
   });
 
   const handlesignup = () => navigate("/signup");
-  const handlehome = () => navigate("/home");
+  const handlehome = () => navigate("/verify");
 
 
   return (

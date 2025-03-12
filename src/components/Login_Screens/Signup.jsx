@@ -58,18 +58,19 @@ const SignUp = () => {
           </Typography>
 
           {/* Social Login Icons */}
-          <Box display="flex" gap={2} my={1}>
+          <Box display="flex" gap={2} mt={1}>
             <GoogleIcon fontSize="large" sx={{ color: "#bbb", border: `1px solid ${colors.semigray}`, p: 0.5, borderRadius: "10px", cursor: "pointer" }} />
             <FacebookIcon fontSize="large" sx={{ color: "#bbb", border: `1px solid ${colors.semigray}`, p: 0.5, borderRadius: "10px", cursor: "pointer" }} />
             <InstagramIcon fontSize="large" sx={{ color: "#bbb", border: `1px solid ${colors.semigray}`, p: 0.5, borderRadius: "10px", cursor: "pointer" }} />
             <FaLinkedinIn fontSize={26} style={{ color: "#bbb", border: `1px solid ${colors.semigray}`, padding: "8px", borderRadius: "10px", cursor: "pointer" }} />
           </Box>
 
-          <Typography mb={2} sx={{ fontFamily, color: colors.darkgray }}>
+          <Typography mb={1} sx={{ fontFamily, color: colors.darkgray }}>
             or use below
           </Typography>
 
           {/* Input Fields */}
+          <CustomTextField label="User Name" required />
           <CustomTextField label="Enter your email Id" required/>
           <CustomTextField type="password" label="Enter password" required/>
           <CustomTextField type="password" label="Re-Enter password" required/>
@@ -86,7 +87,7 @@ const SignUp = () => {
           />
 
           {/* Sign Up & Next Button */}
-          <Box display="flex" justifyContent="space-between" alignItems="center" width="100%" pt={9}>
+          <Box display="flex" justifyContent="space-between" alignItems="center" width="100%" pt={5}>
            <Typography sx={{ fontFamily,display:"flex",gap:"10px" }}>Already Registered. <Link href="#"><Typography sx={{ fontFamily }} onClick={handlelogin}> Login</Typography></Link></Typography> 
             <CustomButton onClick={handlesignup}>Signup</CustomButton>
           </Box>
